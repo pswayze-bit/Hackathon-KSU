@@ -1,0 +1,43 @@
+
+
+<mat-card>
+  <form (submit)="onRegistration(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput type="text" ngModel required name="firstName"  minlength="1" #firstName="ngModel" placeholder="First Name">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input matInput type="text" name="lastName"  ngModel required #lastName="ngModel" placeholder="Last Name">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Email Address</mat-label>
+      <input matInput #email="ngModel" type="text" required ngModel name="email" placeholder="Email Address">
+    </mat-form-field>
+    <br>
+    <mat-form-field hintLabel="Minimum 8 characters.">
+      <mat-label>Password</mat-label>
+      <input matInput #password="ngModel" type="text" required ngModel name="password" placeholder="Password">
+    </mat-form-field>
+    <br>
+    <br>
+    <button
+      mat-raised-button
+      type="submit">
+      Register
+    </button>
+    <br>
+    <br>
+  </form>
+</mat-card>
+
+<mat-accordion multi="true">
+  <mat-expansion-panel *ngFor="let registration of registrations">
+    <mat-expansion-panel-header>
+      {{registration.firstName + registration.lastName}}
+    </mat-expansion-panel-header>
+    <p>{{registration.email}}</p>
+  </mat-expansion-panel>
+</mat-accordion>
